@@ -9,11 +9,20 @@ import InputOption from './InputOption'
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
     
+    const error = () => {
+        if (name != null) {
+            return name[0]
+        }
+        else {
+            return null;
+        }
+    }
+    console.log(error())
     
     return (
         <div ref={ref} className='post'>
             <div className="post__header" >
-            <Avatar src={photoUrl}>{name}</Avatar>
+            <Avatar src={photoUrl}>{name != null ? name[0] : null}</Avatar>
             <div className="post__info">
                 <h2>{name}</h2>
                 <p>{description}</p>
